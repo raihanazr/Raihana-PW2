@@ -8,7 +8,7 @@
 
 		require_once "class_balok.php";
 
-        $Balok1 = new Balok(9,6,8);
+        $Balok1 = new Balok(12,6,4);
 
         echo "<br>Luas Balok 1 = " . $Balok1->getLuas() . "cm";
         echo "<br>Keliling Balok  1 = " . $Balok1->getKeliling() . "cm";
