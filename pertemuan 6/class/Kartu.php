@@ -60,19 +60,23 @@
                     SET kode=?, nama=?, diskon=?, iuran=?
                     WHERE id=?";
             $data = $this->conn->prepare($query);
-        
-            $data->execute([
+            // Memeriksa apakah eksekusi query berhasil
+            if ($data->execute([
                 $this->kode, 
                 $this->nama, 
                 $this->diskon, 
-                $this->iuran
-            ]);
-        
-            return $data->rowCount() > 0;
+                $this->iuran,
+                $this->id
+            ])) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         // Hapus kartu dari database
         public function delete(){
+            var_dump($this->id);
             $query = "DELETE FROM {$this->table_name} WHERE id = ?";
             $data = $this->conn->prepare($query);
             $data->execute([$this->id]);

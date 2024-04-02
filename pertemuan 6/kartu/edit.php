@@ -5,18 +5,23 @@ require_once '../class/Kartu.php';
 $database = new Database();
 $db = $database->dbConnection();
 
-$pkartu = new Kartu($db);
+$kartu = new Kartu($db);
 
 if(isset($_POST['update'])) {
-    $kartu->kode = $_POST['id'];
+    $kartu->id = $_POST['id'];
     $kartu->kode = $_POST['kode'];
     $kartu->nama = $_POST['nama'];
     $kartu->diskon = $_POST['diskon'];
     $kartu->iuran = $_POST['iuran'];
 
-    $kartu->update();
-    header("Location: index.php");
-    exit;
+    // Memeriksa apakah pembaruan berhasil atau tidak
+    if($kartu->update()) {
+        header("Location: index.php");
+        exit;
+    } else {
+        echo "Gagal memperbarui data.";
+        // Atau lakukan tindakan lain sesuai kebutuhan Anda
+    }
 } elseif(isset($_GET['id'])) {
     $kartu->id = $_GET['id'];
     $stmt = $kartu->edit();
@@ -56,7 +61,7 @@ if(isset($_POST['update'])) {
         <label for="iuran">Iuran:</label>
         <input type="number" name="iuran" value="<?php echo $iuran; ?>" required>
         <br>
-        <input type="submit" name="update" value="Update">
+        <input type="submit" name="update" value="update">
     </form>
 </body>
 </html>

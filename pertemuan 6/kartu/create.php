@@ -5,7 +5,7 @@ require_once '../class/Kartu.php';
 $database = new Database();
 $db = $database->dbConnection();
 
-$kartu = new KARTU($db);
+$kartu = new Kartu($db);
 
 if(isset($_POST['tambah'])){
     $kartu->kode = $_POST['id'];
@@ -35,11 +35,11 @@ if(isset($_POST['tambah'])){
         <label for="nama">Nama:</label>
         <input type="text" name="nama" required>
         <br>
-        <label for="harga_beli">Diskon:</label>
-        <input type="number" name="harga_beli" required>
+        <label for="diskon">Diskon:</label>
+        <input type="number" name="diskon" required>
         <br>
-        <label for="harga_jual">Iuran:</label>
-        <input type="number" name="harga_jual" required>
+        <label for="iuran">Iuran:</label>
+        <input type="number" name="iuran" required>
         <br>
         <input type="submit" name="tambah" value="Tambah">
     </form>

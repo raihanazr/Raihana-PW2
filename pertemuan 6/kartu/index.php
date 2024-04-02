@@ -25,7 +25,7 @@ $data = $kartu->index();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar Kartu/title>
+    <title>Daftar Kartu</title>
 </head>
 <body>
     <h1>Daftar Kartu</h1>
